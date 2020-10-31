@@ -14,6 +14,9 @@ Student of Data Science at Flatiron School
 # October 30, 2020
 
 
+![awesome](https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/halloween.jpg)
+
+
 ## In this Git Repository, you will find the following Jupyter Notebook file:
 
 [https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/collins_project2.ipynb](https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/collins_project2.ipynb)
