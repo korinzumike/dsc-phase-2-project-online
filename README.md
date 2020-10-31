@@ -1,115 +1,76 @@
-# Phase 2 Project
 
-## Introduction
 
-In this lesson, we review the guidelines for the Phase 2 Project.
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 1.</p>
+<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
-## Objectives
+<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
 
-You will be able to:
+<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
-* Start your Phase 2 Project
-* Check that your project meets the requirements
-* Submit your project materials in Canvas
-* Prepare for your project review
 
-## Project Overview
 
-Another module down--you're almost half way there!
+# Phase 2 Project:  “Residential Real Estate Sales in King County, WA”
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-online/master/halfway-there.gif)
 
-All that remains in Phase 2 is to put our newfound data science skills to use with a large project! You should expect this project to take between 20 and 25 hours of solid, focused effort. If you're done way quicker, go back and dig in deeper or try some of the optional "level up" suggestions. If you're worried that you're going to get to 30 hrs and still not even have the data imported, reach out to an instructor in Slack ASAP to get some help!
+# Michael Collins \
+Student of Data Science at Flatiron School
 
-### The Data
 
-For this project, you'll be working with the King County House Sales dataset. We've modified the dataset to make it a bit more fun and challenging.  The dataset can be found in the file `kc_house_data.csv` in the data folder in this repo.
 
-The description of the column names can be found in the `column_names.md` file in the data folder in this repo. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions relating to what the data means.
+<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-You'll clean, explore, and model this dataset with a multivariate linear regression to predict the sale price of houses as accurately as possible.
 
-### Business Problem
+![alt_text](images/image1.png "image_tooltip")
 
-For this project, it will be up to you to define a stakeholder and business problem appropriate to this dataset.
 
-## Deliverables
 
-There are four deliverables for this project:
+# October 30, 2020
 
-1. A **GitHub repository**
-2. A **Jupyter Notebook**
-3. A non-technical presentation **slide deck**
-4. A non-technical presentation **recording**
 
-Keep in mind that the audience for these deliverables is not only your teacher, but also potential employers. Employers will look at your project deliverables to evaluate multiple skills, including coding, modeling, communication, and domain knowledge. You will want to polish these as much as you can, both during the course and afterwards.
+## In this Git Repository, you will find the following Jupyter Notebook file:
 
-### GitHub Repository
+[https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/collins_project2.ipynb](https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/collins_project2.ipynb)
 
-Your GitHub repository is the public-facing version of your project that your instructors and potential employers will see - make it as accessible as you can. At a minimum, it should contain all your project files and a README.md file that summarizes your project and helps visitors navigate the repository.
+This Jupyter Notebook has several cells, which need to be executed in order.  Execution of all the cells can be achieved **by selecting “Run All”** from the “Cell” menu of the Jupyter Notebook interface.  
 
-### Jupyter Notebook
 
-Your Jupyter Notebook is the primary source of information about your analysis. At a minimum, it should contain or import all of the code used in your project and walk the reader through your project from start to finish. You may choose to use multiple Jupyter Notebooks in your project, but you should have one that provides a full project overview as a point of entry for visitors.
 
-For this project, your Jupyter Notebook should meet the following specifications:
+*   The first cell is labeled **“Importation of Libraries”**.  It imports python libraries that are used in subsequent cells. \
 
-#### Organization/Code Cleanliness
+*   The second cell is labeled **“K-Nearest-Neighbor Evaluation”**.  It contains highly specialized code that I wrote specifically for this project.  The code in this cell does an efficient job of listing the event indices for the “K nearest neighbors” of a particular sales event.   
 
-* The notebook should be well organized, easy to follow,  and code should be commented where appropriate.  
-    * Level Up: The notebook contains well-formatted, professional looking markdown cells explaining any substantial code.  All functions have docstrings that act as professional-quality documentation
-* The notebook is written for technical audiences with a way to both understand your approach and reproduce your results. The target audience for this deliverable is other data scientists looking to validate your findings.
+    The metric used (for judging the proximity between two events P and Q) is the **geodesic** **distance** between (the location of event P) and (the location of event Q).  This is analogous to the “great circle distance” between point P and point Q, except that Earth is assumed to be the shape and size of the **WGS84 Reference Ellipsoid **at sea level, rather than spherical.
 
-#### Visualizations & EDA
 
-* Your project contains at least 4 meaningful data visualizations, with corresponding interpretations. All visualizations are well labeled with axes labels, a title, and a legend (when appropriate)  
-* You pose at least 3 meaningful questions and answer them through EDA.  These questions should be well labeled and easy to identify inside the notebook.
-    * **Level Up**: Each question is clearly answered with a visualization that makes the answer easy to understand.   
-* Your notebook should contain 1 - 2 paragraphs briefly explaining your approach to this project.
+    When determining the K nearest events to “Event P at Point P”, Event P is EXCLUDED from the list.  In other words, an event is NEVER its own neighbor.  Furthermore, there are multiple examples (in the provided Dataset) of events that share the same exact (latitude, longitude) coordinates.  When finding the K nearest events to “Event P at Point P”, EVERY event whose location is identical to Point P is also EXCLUDED from the list. \
+This practice (of **excluding ALL events at Point P from the nearest K neighbors list** of Point P) prevents “known price(s) of property at Point P” from being included in the calculation of the “empirical price of a property at Point P”.
 
-#### Model Quality/Approach
+*   The third cell is labeled **“IMPORT DATA”**.  The code in this cell looks for a file of “clean” data called “kc_house_data_KNN.csv”, and imports data from that CSV file, if that file exists.  \
+  \
+If the file “kc_house_data_KNN.csv” is not available, the original “kc_house_data.csv” file is imported instead.  As the original “kc_house_data.csv” file is being read, raw data from that file is filtered to “clean” the data.  Clean data is then stored in a pandas dataframe. \
+ \
+If the IMPORT DATA cell did not find previously evaluated nearest neighbor lists (a list of the event indices for the K nearest sales events, with one such list per sales event), the K-nearest neighbors lists will be calculated from scratch.  For the data that gets tabulated in “kc_house_data_KNN.csv”, a value of K=50 was used in the nearest-neighbor evaluations.  The process of identifying the event indices of the 50 nearest sales events (for each of the ~21000 sales events, in turn) required about 45 minutes of wall-clock time on the laptop computer of the author. \
+ \
+The number of nearest neighbors to use in computation of “Local Mean Price”, “Local Mean Number of Bedrooms”, “Local Mean Number of Bathrooms”, etc. was stipulated to be K=15 in this Jupyter Notebook, and the analyses therein.  Other values of K were considered.  K=15 was chosen, initially, because the provided dataset included columns labeled  “sqft_living15” and “sqft_lot15”, which correspond to square footages of the NEAREST 15 properties that were sold in the vicinity of each sale.   \
+ \
+A crucial task performed by the “IMPORT DATA” cell is the real-time computation of the local mean value and local median value for VARIOUS QUANTITIES associated with each property sale.  These quantities include price, bathrooms, bedrooms, etc.  All such quantities are added to the pandas dataframe “df”.  A copy of the fully populated dataframe is written as a date-stamped CSV file in the “./data” folder  each time the IMPORT DATA cell is executed.  This backup copy of all data in dataframe “df” is intended to facilitate detailed scrutiny of any or all derived quantities, should those quantities become subjects of later interest. \
 
-* Your model should not include any predictors with p-values greater than .05.  
-* Your notebook shows an iterative approach to modeling, and details the parameters and results of the model at each iteration.  
-    * **Level Up**: Whenever necessary, you briefly explain the changes made from one iteration to the next, and why you made these choices.  
-* You provide at least 1 paragraph explaining your final model.   
-* You pick at least 3 coefficients from your final model and explain their impact on the price of a house in this dataset.   
+*   The next several cells (those that precede the “OLS Regression Model” cell) are related to feature selection. \
 
-### Non-Technical Presentation Slides and Recording
+*   The “OLS Regression Model” cell produces the results of Ordinary Least Squares multivariate Linear Regression.  These results are described in the slide show, linked below. \
 
-Your non-technical presentation is your opportunity to communicate clearly and concisely about your project and it's real-world relevance. The target audience should be people with limited technical knowledge who may be interested in leveraging your project. For Phase 1, these would be Microsoft executives interested in making decisions about movie development.
+*   Cells that appear AFTER “OLS Regression Model” are related to the production of graphs and maps that are used as visualizations in the slide show, linked below. 
 
-Your presentation should:
+ \
+**In this Git Repository, you will find the following Jupyter Notebook file:**
 
-* Contain between 5 - 10 professional-quality slides.  
-    * **Level Up**: The slides should use visualizations whenever possible, and avoid walls of text.
-* Take no more than 5 minutes to present.   
-* Avoid technical jargon and explain the results in a clear, actionable way for non-technical audiences.
+[https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/images/Collins_Project2_Slides.pdf](https://github.com/korinzumike/dsc-phase-2-project-online/blob/master/images/Collins_Project2_Slides.pdf)
 
-**_Based on the results of your models, your presentation should discuss at least two concrete features that highly influence housing prices._**
+This slide presentation (slide deck) contains 13 color slides, in which the graphs generated by collins_project2_workbook.ipynb are considered in detail.
 
-We recommend using Google Slides, PowerPoint or Keynote to create your presentation slides. We recommend using Zoom to record your live presentation to a local video file ([instructions here][]) - other options include Quicktime, PowerPoint, or Nimbus. Video files must be under 500 MB and formatted as 3GP, ASF, AVI, FLV, M4V, MOV, MP4, MPEG, QT, or WMV.
 
-## Getting Started
+## In this Git Repository, you will find the following folder that contains Images (including graphs and maps) :
 
-Please start by reviewing this document. If you have any questions, please ask them in Slack ASAP so (a) we can answer the questions and (b) so we can update this document to make it clearer.
+[https://github.com/korinzumike/dsc-phase-2-project-online/tree/master/images](https://github.com/korinzumike/dsc-phase-2-project-online/tree/master/images)
 
-**When you start on the project, reach out to an instructor immediately via Slack to let them know and schedule your project review.** If you're not sure who to schedule with, please ask in your cohort channel in Slack.
-
-Once you're done with the numbered topics in Phase 1, please start on the project. Do that by forking [the Phase 2 Project Repository][], cloning it locally, and working in the `student.ipynb` file. Make sure to also add and commit a PDF of your presentation to your repository with a file name of `presentation.pdf`.
-
-## Project Submission and Review
-
-Review [the Phase Project Submission and Review guidance][] to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
-
-**Please note: We need to receive your complete submission at least 24 hours before your review to confirm that you are prepared for the review. If you wish to revise your submission, please do so no later than 3 hours before your review so that we can have time to look at your updated materials.**
-
-## Summary
-
-The end-of-phase projects and project reviews are a critical part of the program. They give you a chance to both bring together all the skills you've learned into realistic projects and to practice key "business judgement" and communication skills that you otherwise might not get as much practice with.
-
-The projects are serious and important - they can be passed and they can be failed. Take the project seriously, put the time in, ask for help from your peers or instructors early and often if you need it, and treat the review as a job interview and you'll do great. We're rooting for you to succeed and we're only going to ask you to take a review again if we believe that you need to. We'll also provide open and honest feedback so you can improve as quickly and efficiently as possible.
-
-[the Phase 2 Project Repository]: https://github.com/learn-co-curriculum/dsc-phase-2-project-online
-[instructions here]: https://support.zoom.us/hc/en-us/articles/201362473-Local-recording
-[the Phase Project Submission and Review guidance]: https://github.com/learn-co-curriculum/dsc-project-submissions-online
+In this folder are previously-generated versions of the graphs that would otherwise be generated by collins_project1_workbook.ipynb.  These graphs are provided as a courtesy to those who are unable to run the Jupyter Notebook and generate the graphs directly.
